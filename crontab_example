@@ -1,0 +1,4 @@
+# automatically update the lists to your favourite signature management system
+
+0 0/12 * * * root /usr/local/bin/malc0de.pl domain | awk '{print "sigma.pl --add-sig --type=domain --sig-text=" $0 " --reference=malc0de.com"}' | sh
+10 0/12 * * * root /usr/local/bin/malc0de.pl ip | awk '{print "sigma.pl --add-sig --type=ip --sig-text=" $0 " --reference=malc0de.com"}' | sh
