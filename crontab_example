@@ -2,3 +2,7 @@
 
 0 0/12 * * * root /usr/local/bin/malc0de.pl domain | awk '{print "sigma.pl --add-sig --type=domain --sig-text=" $0 " --reference=malc0de.com"}' | sh
 10 0/12 * * * root /usr/local/bin/malc0de.pl ip | awk '{print "sigma.pl --add-sig --type=ip --sig-text=" $0 " --reference=malc0de.com"}' | sh
+
+
+0 1/13 * * * root /usr/local/bin/security-research.pl domain | sort | uniq | awk '{print "sigma.pl --add-sig --type=domain --sig-text=" $0 " --reference=security-research.dyndns.org"}' | sh
+10 1/13 * * * root /usr/local/bin/security-research.pl ip | sort | uniq | awk '{print "sigma.pl --add-sig --type=ip --sig-text=" $0 " --reference=security-research.dyndns.org"}' | sh
