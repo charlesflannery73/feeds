@@ -22,6 +22,7 @@ foreach my $line (@response) {
     my $ip = $response[$num + 2];
 
     $domain =~ s/^.*<td>//;
+    $domain =~ s/http:\/\///;
     $domain =~ s/\/.*$//;
     $domain =~ s/:.*$//;
     $domain =~ s/<//;
