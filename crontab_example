@@ -1,8 +1,14 @@
 # automatically update the lists to your favourite signature management system
+#malc0de
+0 0,12 * * * /usr/local/bin/malc0de.pl domain | awk '{print "/usr/local/bin/sigma.pl --add-sig --type=domain --sig-text=" $0 " --reference=malc0de.com"}' | sh
+10 0,12 * * * /usr/local/bin/malc0de.pl ip | awk '{print "/usr/local/bin/sigma.pl --add-sig --type=ip --sig-text=" $0 " --reference=malc0de.com"}' | sh
 
-0 0/12 * * * root /usr/local/bin/malc0de.pl domain | awk '{print "sigma.pl --add-sig --type=domain --sig-text=" $0 " --reference=malc0de.com"}' | sh
-10 0/12 * * * root /usr/local/bin/malc0de.pl ip | awk '{print "sigma.pl --add-sig --type=ip --sig-text=" $0 " --reference=malc0de.com"}' | sh
+#security-research.dyndns.org
+0 1,13 * * * /usr/local/bin/security-research.pl domain | sort | uniq | awk '{print "/usr/local/bin/sigma.pl --add-sig --type=domain --sig-text=" $0 " --reference=security-research.dyndns.org"}' | sh
+10 1,13 * * * /usr/local/bin/security-research.pl ip | sort | uniq | awk '{print "/usr/local/bin/sigma.pl --add-sig --type=ip --sig-text=" $0 " --reference=security-research.dyndns.org"}' | sh
 
+#cybercrime-tracker.com
+0 2,13 * * * /usr/local/bin/cybercrime-tracker.pl domain | sort | uniq | awk '{print "/usr/local/bin/sigma.pl --add-sig --type=domain --sig-text=" $0 " --reference=cybercrime-tracker.com"}' | sh
+10 2,13 * * * /usr/local/bin/cybercrime-tracker.pl ip | sort | uniq | awk '{print "/usr/local/bin/sigma.pl --add-sig --type=ip --sig-text=" $0 " --reference=cybercrime-tracker.com"}' | sh
+20 2,13 * * * /usr/local/bin/cybercrime-tracker.pl url | sort | uniq | awk '{print "/usr/local/bin/sigma.pl --add-sig --type=url --sig-text=\"" $0 "\" --reference=cybercrime-tracker.com"}' | sh
 
-0 1/13 * * * root /usr/local/bin/security-research.pl domain | sort | uniq | awk '{print "sigma.pl --add-sig --type=domain --sig-text=" $0 " --reference=security-research.dyndns.org"}' | sh
-10 1/13 * * * root /usr/local/bin/security-research.pl ip | sort | uniq | awk '{print "sigma.pl --add-sig --type=ip --sig-text=" $0 " --reference=security-research.dyndns.org"}' | sh
