@@ -8,7 +8,11 @@
 10 1,13 * * * /usr/local/bin/security-research.pl ip | sort | uniq | awk '{print "/usr/local/bin/sigma.pl --add-sig --type=ip --sig-text=" $0 " --reference=security-research.dyndns.org"}' | sh
 
 #cybercrime-tracker.com
-0 2,13 * * * /usr/local/bin/cybercrime-tracker.pl domain | sort | uniq | awk '{print "/usr/local/bin/sigma.pl --add-sig --type=domain --sig-text=" $0 " --reference=cybercrime-tracker.com"}' | sh
-10 2,13 * * * /usr/local/bin/cybercrime-tracker.pl ip | sort | uniq | awk '{print "/usr/local/bin/sigma.pl --add-sig --type=ip --sig-text=" $0 " --reference=cybercrime-tracker.com"}' | sh
-20 2,13 * * * /usr/local/bin/cybercrime-tracker.pl url | sort | uniq | awk '{print "/usr/local/bin/sigma.pl --add-sig --type=url --sig-text=\"" $0 "\" --reference=cybercrime-tracker.com"}' | sh
+0 2,14 * * * /usr/local/bin/cybercrime-tracker.pl domain | sort | uniq | awk '{print "/usr/local/bin/sigma.pl --add-sig --type=domain --sig-text=" $0 " --reference=cybercrime-tracker.com"}' | sh
+10 2,14 * * * /usr/local/bin/cybercrime-tracker.pl ip | sort | uniq | awk '{print "/usr/local/bin/sigma.pl --add-sig --type=ip --sig-text=" $0 " --reference=cybercrime-tracker.com"}' | sh
+20 2,14 * * * /usr/local/bin/cybercrime-tracker.pl url | sort | uniq | awk '{print "/usr/local/bin/sigma.pl --add-sig --type=url --sig-text=\"" $0 "\" --reference=cybercrime-tracker.com"}' | sh
+
+#zeustracker.abuse.ch
+0 3,15 * * * /usr/local/bin/zeustracker-abuse-ch.pl domain | awk '{print "/usr/local/bin/sigma.pl --add-sig --type=domain --sig-text=" $0 " --reference=zeustracker.abuse.ch"}' | sh
+10 3,15 * * * /usr/local/bin/zeustracker-abuse-ch.pl ip | awk '{print "/usr/local/bin/sigma.pl --add-sig --type=ip --sig-text=" $0 " --reference=zeustracker.abuse.ch"}' | sh
 
