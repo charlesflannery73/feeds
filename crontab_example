@@ -16,3 +16,7 @@
 0 3,15 * * * /usr/local/bin/zeustracker-abuse-ch.pl domain | awk '{print "/usr/local/bin/sigma.pl --add-sig --type=domain --sig-text=" $0 " --reference=zeustracker.abuse.ch"}' | sh
 10 3,15 * * * /usr/local/bin/zeustracker-abuse-ch.pl ip | awk '{print "/usr/local/bin/sigma.pl --add-sig --type=ip --sig-text=" $0 " --reference=zeustracker.abuse.ch"}' | sh
 
+#openphish
+0 4,16 * * * /usr/local/bin/openphish.pl domain | sort | uniq | awk '{print "/usr/local/bin/sigma.pl --add-sig --type=domain --sig-text=" $0 " --reference=openphish.com"}' | sh
+10 4,16 * * * /usr/local/bin/openphish.pl ip | sort | uniq | awk '{print "/usr/local/bin/sigma.pl --add-sig --type=ip --sig-text=" $0 " --reference=openphish.com"}' | sh
+
